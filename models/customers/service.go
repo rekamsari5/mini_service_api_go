@@ -12,7 +12,7 @@ type service struct {
 }
 
 type Service interface {
-	GetFromApi(ctx context.Context) ([]Customers, error)
+	GetFromApi(ctx context.Context) ([]CustomerApi, error)
 	Create(input RequestCustomer) (ResultRequest, error)
 	GetAll(search SearchCustomer) ([]Customers, error)
 	Delete(input RequestDelete) error
@@ -26,13 +26,13 @@ func NewService(repo Repository) *service {
 type ResponseBodyData struct {
 	ResponseCode  string      `json:"responseCode"`
 	ResponseDesc  string      `json:"responseDesc"`
-	ResponseData  []Customers `json:"responseData"`
+	ResponseData  []CustomerApi `json:"responseData"`
 	ResponseError string      `json:"responseError"`
 }
 
-func (s *service) GetFromApi(ctx context.Context) ([]Customers, error) {
+func (s *service) GetFromApi(ctx context.Context) ([]CustomerApi, error) {
 	var err error
-	var results []Customers
+	var results []CustomerApi
 
 	var responseBody ResponseBodyData
 
@@ -61,7 +61,6 @@ func (s *service) GetFromApi(ctx context.Context) ([]Customers, error) {
 func (s *service) Create(input RequestCustomer) (ResultRequest, error) {
 	var err error
 	var result ResultRequest
-
 	result, err = s.repository.Create(input)
 	helper.PanicIfError(err)
 	return result, nil

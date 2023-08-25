@@ -22,3 +22,12 @@ type ResultUpdate struct {
 	Address  string `json:"address"`
 	UpdateAt string `json:"updated_at"`
 }
+
+
+type CustomerApi struct{
+	ID        int64          `json:"id"`
+	Name      string         `json:"name"`
+	Address   string         `json:"address"`
+	CreatedAt string         `json:"created_at"`
+	UpdateAt  string `json:"updated_at"`
+}

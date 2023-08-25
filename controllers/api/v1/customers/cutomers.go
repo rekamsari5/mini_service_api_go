@@ -35,7 +35,7 @@ func (h *customerController) GetFromApi(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
-	response := helper.APIResponseSuccess("Success get data customer", model.Formatter(result))
+	response := helper.APIResponseSuccess("Success get data customer", result)
 	c.JSON(http.StatusOK, response)
 	return
 
